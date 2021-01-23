@@ -1,7 +1,4 @@
-//625f1f0d-b936-4a01-b7de-32e5fa8480de
-import 'dart:convert';
 
-import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dogapp/ui/models/dogs_model.dart';
 import 'package:provider/provider.dart';
@@ -15,14 +12,29 @@ class BreedsPage extends StatefulWidget {
 
 class _BreedsPageState extends State<BreedsPage> {
 
+  ScrollController listController = ScrollController();
+  bool isScrollListenerAttach = false;
+
   @override
   void initState() {
     super.initState();
   }
 
+  @override
+  void dispose() {
+    listController.dispose();
+    super.dispose();
+  }
+
   Widget showLoading() {
     return Center(
-      child: CircularProgressIndicator(),
+      child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            CircularProgressIndicator(),
+            Text('Loading...', style: TextStyle(color: Colors.grey),)
+          ],
+      ),
     );
   }
 
@@ -32,10 +44,28 @@ class _BreedsPageState extends State<BreedsPage> {
       create:(_) => DogsModel(),
       child: Consumer<DogsModel>(
       builder: (context, model, child) {
+        if (isScrollListenerAttach == false) {
+          listController.addListener(() {
+            if (listController.position.pixels == listController.position.maxScrollExtent) {
+              model.getMoreBreeds();
+            }
+          });
+          isScrollListenerAttach = true;
+        }
         return Scaffold(
+          backgroundColor: Colors.grey[300],
           body: model.loading == true ? showLoading()
-          : ListView(
-            children: model.cards,
+          : ListView.builder(
+            controller: listController,
+            itemCount: model.cards.length + 1,
+            itemBuilder: (context, index) {
+
+              if (index == model.cards.length) {
+                return model.noMoreData == true ? Container() : Center(child: CircularProgressIndicator());
+              } else {
+                return model.cards[index];
+              }
+            },
           ),
         );
         }

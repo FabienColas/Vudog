@@ -23,6 +23,7 @@ class _HomePageState extends State<HomePage> {
           return Scaffold(
             body: model.screen,
             bottomNavigationBar: BottomNavigationBar(
+              selectedItemColor: Color(0xff31d287),
               items: [
                 BottomNavigationBarItem(
                   icon: Icon(Icons.login),

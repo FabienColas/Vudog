@@ -20,6 +20,33 @@ class DogCard extends StatefulWidget {
 
 class _DogCardState extends State<DogCard> {
 
+  Widget _printTemperament() {
+    return Column(
+      children: [
+        Row(
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: [
+            Text("Temperament", style: TextStyle(fontWeight: FontWeight.bold),),
+            Container(
+              margin: EdgeInsets.only(left: 5),
+              child: Icon(Icons.pets, size: 18,),
+            )
+          ],
+        ),
+        Text(widget.temperament)
+      ],
+    );
+  }
+
+  Widget _printLifeSpan() {
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        Text("Lifespan(years)", style: TextStyle(fontWeight: FontWeight.bold),),
+        Text(widget.lifespan)
+      ],
+    );
+  }
 
   Widget _printWeight() {
     return Column(
@@ -35,7 +62,11 @@ class _DogCardState extends State<DogCard> {
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-      Text("Height(cm)", style: TextStyle(fontWeight: FontWeight.bold),),
+      Row(
+        children: [
+          Text("Height(cm)", style: TextStyle(fontWeight: FontWeight.bold),),
+        ],
+      ),
       Text(widget.heightMetric)
       ],
     );
@@ -67,11 +98,15 @@ class _DogCardState extends State<DogCard> {
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
                       _printWeight(),
-                      VerticalDivider(color: Colors.black, thickness: 1.5,),
-                      _printHeight()
+                      VerticalDivider(color: Colors.grey, thickness: 1.5,),
+                      _printHeight(),
                     ],
                   ),
-                )
+                ),
+                _spaceAround(),
+                _printLifeSpan(),
+                _spaceAround(),
+                _printTemperament()
               ]
             ),
           ),
@@ -80,7 +115,7 @@ class _DogCardState extends State<DogCard> {
               style: ButtonStyle(
                 backgroundColor: MaterialStateProperty.all<Color>(Colors.blue),
               ),
-              child: Text('Close', style: TextStyle(color: Colors.white),),
+              child: Text('Close', style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),),
               onPressed: () {
                 Navigator.of(context).pop();
               },
@@ -93,29 +128,33 @@ class _DogCardState extends State<DogCard> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
-      child: InkWell(
-        child: Row(
-          children: [
-            CircleAvatar(
-                radius: 50,
-                backgroundColor: Colors.white,
-                backgroundImage: NetworkImage(
-                  widget.image,
-                )
-            ),
-            Container(
-                margin: EdgeInsets.only(left: 10),
+      margin: EdgeInsets.symmetric(horizontal: 10),
+      child: Card(
+        child: InkWell(
+          child: Row(
+            children: [
+              Container(
+                margin: EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+                child: CircleAvatar(
+                    radius: 50,
+                    backgroundColor: Colors.white,
+                    backgroundImage: NetworkImage(
+                      widget.image,
+                    )
+                ),
+              ),
+              Flexible(
                 child: Text(
-                    widget.name,
-                    style: TextStyle(fontSize: 18,),
-                )
-            ),
-          ],
+                  widget.name,
+                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                ),
+              )
+            ],
+          ),
+          onTap: () {
+            _showMaterialDialog();
+          },
         ),
-        onTap: () {
-          _showMaterialDialog();
-        },
       ),
     );
   }
