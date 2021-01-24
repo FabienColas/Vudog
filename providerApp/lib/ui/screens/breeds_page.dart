@@ -1,6 +1,7 @@
 
 import 'package:flutter/material.dart';
-import 'package:flutter_dogapp/core/models/dogs_model.dart';
+import 'package:flutter_vudog/core/models/dogs_model.dart';
+import 'package:flutter_vudog/ui/widgets/custom_containers.dart';
 import 'package:provider/provider.dart';
 
 class BreedsPage extends StatefulWidget {
@@ -59,16 +60,25 @@ class _BreedsPageState extends State<BreedsPage> with AutomaticKeepAliveClientMi
         return Scaffold(
           backgroundColor: Colors.grey[200],
           body: model.loading == true ? showLoading()
-          : ListView.builder(
-            controller: listController,
-            itemCount: model.cards.length + 1,
-            itemBuilder: (context, index) {
-              if (index == model.cards.length) {
-                return model.noMoreData == true ? Container() : Center(child: CircularProgressIndicator());
-              } else {
-                return model.cards[index];
-              }
-            },
+          : SafeArea(
+            child: Column(
+              children: [
+                customContainer(Text('Breeds list', style: TextStyle(color: Colors.black, fontSize: 18),), true, true),
+                Expanded(
+                  child: ListView.builder(
+                    controller: listController,
+                    itemCount: model.cards.length + 1,
+                    itemBuilder: (context, index) {
+                      if (index == model.cards.length) {
+                        return model.noMoreData == true ? Container() : Center(child: CircularProgressIndicator());
+                      } else {
+                        return model.cards[index];
+                      }
+                    },
+                  ),
+                ),
+              ],
+            ),
           ),
         );
         }

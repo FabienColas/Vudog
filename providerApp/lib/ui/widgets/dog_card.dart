@@ -1,6 +1,6 @@
 
 import 'package:flutter/material.dart';
-import 'package:flutter_dogapp/assets/constants.dart' as Constants;
+import 'package:flutter_vudog/assets/constants.dart' as Constants;
 
 class DogCard extends StatefulWidget {
   DogCard({Key key, this.name, this.image, this.origin,
@@ -27,7 +27,7 @@ class _DogCardState extends State<DogCard> {
         Row(
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
-            Text("Temperament", style: TextStyle(fontWeight: FontWeight.bold),),
+            Text('Temperament', style: TextStyle(fontWeight: FontWeight.bold),),
             Container(
               margin: EdgeInsets.only(left: 5),
               child: Icon(Icons.pets, size: 18,),
@@ -43,7 +43,7 @@ class _DogCardState extends State<DogCard> {
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        Text("Lifespan(years)", style: TextStyle(fontWeight: FontWeight.bold),),
+        Text(Constants.LIFESPAN, style: TextStyle(fontWeight: FontWeight.bold),),
         Text(widget.lifespan)
       ],
     );
@@ -53,7 +53,7 @@ class _DogCardState extends State<DogCard> {
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        Text("Weight(kg)", style: TextStyle(fontWeight: FontWeight.bold),),
+        Text(Constants.WEIGHT_METRIC, style: TextStyle(fontWeight: FontWeight.bold),),
         Text(widget.weightMetric)
       ],
     );
@@ -63,7 +63,7 @@ class _DogCardState extends State<DogCard> {
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        Text("Height(cm)", style: TextStyle(fontWeight: FontWeight.bold),),
+        Text(Constants.HEIGHT_METRIC, style: TextStyle(fontWeight: FontWeight.bold),),
         Text(widget.heightMetric)
       ],
     );
@@ -127,6 +127,7 @@ class _DogCardState extends State<DogCard> {
     return Container(
       margin: EdgeInsets.symmetric(horizontal: 10),
       child: Card(
+        elevation: 10,
         child: InkWell(
           child: Row(
             children: [

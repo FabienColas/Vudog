@@ -1,7 +1,8 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:flutter_dogapp/core/models/screens_model.dart';
+import 'package:flutter_vudog/assets/constants.dart' as Constants;
+import 'package:flutter_vudog/core/models/screens_model.dart';
 import 'package:provider/provider.dart';
 
 class HomePage extends StatefulWidget {
@@ -31,7 +32,9 @@ class HomePageState extends State<HomePage> {
               },
             ),
             bottomNavigationBar: BottomNavigationBar(
-              selectedItemColor: Color(0xff31d287),
+              backgroundColor: Colors.black,
+              unselectedItemColor: Constants.BLUE,
+              selectedItemColor: Constants.GREEN,
               items: [
                 BottomNavigationBarItem(
                   icon: Icon(Icons.login),

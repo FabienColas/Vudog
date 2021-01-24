@@ -1,7 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:flutter_dogapp/ui/widgets/dog_card.dart';
-import 'package:flutter_dogapp/ui/widgets/errors_dialog.dart';
+import 'package:flutter_vudog/ui/widgets/dog_card.dart';
+import 'package:flutter_vudog/ui/widgets/errors_dialog.dart';
 
 class DogsModel extends ChangeNotifier {
 
@@ -25,7 +25,7 @@ class DogsModel extends ChangeNotifier {
       dio.options.headers['content-Type'] = 'application/json';
       dio.options.headers['x-api-key'] = '625f1f0d-b936-4a01-b7de-32e5fa8480de';
       final response = await dio.get(
-          url, queryParameters: {"page": currentPage, 'limit': 15});
+          url, queryParameters: {'page': currentPage, 'limit': 30});
       if (response.statusCode == 200) {
         var result = response.data;
         result.forEach((element) {
@@ -54,7 +54,7 @@ class DogsModel extends ChangeNotifier {
       dio.options.headers['content-Type'] = 'application/json';
       dio.options.headers['x-api-key'] = '625f1f0d-b936-4a01-b7de-32e5fa8480de';
       final response = await dio.get(
-          url, queryParameters: {"page": currentPage, 'limit': 30});
+          url, queryParameters: {'page': currentPage, 'limit': 30});
       if (response.statusCode == 200) {
         var result = response.data;
         if (response.data.length == 0) {

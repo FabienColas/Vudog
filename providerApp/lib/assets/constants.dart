@@ -9,7 +9,7 @@ const String HINT_EMAIL = 'dog@gmail.com';
 const String HINT_PASSWORD = '********';
 //########## BREEDS PAGE #########
 const String WEIGHT_METRIC = 'Weight(kg)';
-const String HEIGHT_METRIC = 'HEIGHT(kg)';
+const String HEIGHT_METRIC = 'Height(kg)';
 const String LIFESPAN = 'Lifespan(years)';
 const String TEMPERAMENT = 'Temperament';
 

@@ -1,9 +1,9 @@
 
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_dogapp/ui/widgets/errors_dialog.dart';
-import 'package:flutter_dogapp/extensions/string_extensions.dart';
-import 'package:flutter_dogapp/ui/widgets/success_dialog.dart';
+import 'package:flutter_vudog/ui/widgets/errors_dialog.dart';
+import 'package:flutter_vudog/extensions/string_extensions.dart';
+import 'package:flutter_vudog/ui/widgets/success_dialog.dart';
 
 class LoginModel extends ChangeNotifier {
   final BuildContext context;
@@ -20,8 +20,8 @@ class LoginModel extends ChangeNotifier {
       Dio dio = Dio();
       String url = 'https://reqres.in/api/login';
       final response = await dio.post(url, data: {
-        "email": "$email",
-        "password": "$password"
+        'email': '$email',
+        'password': '$password'
         },
       );
       if (response.statusCode == 200) {

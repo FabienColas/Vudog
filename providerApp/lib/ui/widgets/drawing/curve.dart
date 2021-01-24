@@ -1,6 +1,6 @@
 import 'dart:math';
 import 'package:flutter/material.dart';
-import 'package:flutter_dogapp/assets/constants.dart' as Constants;
+import 'package:flutter_vudog/assets/constants.dart' as Constants;
 import 'custom_clip.dart';
 
 class ShapeContainer extends StatelessWidget {
