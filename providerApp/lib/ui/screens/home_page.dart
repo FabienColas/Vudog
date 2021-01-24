@@ -1,6 +1,7 @@
 
 import 'package:flutter/material.dart';
-import 'package:flutter_dogapp/ui/models/screens_model.dart';
+import 'package:flutter/widgets.dart';
+import 'package:flutter_dogapp/core/models/screens_model.dart';
 import 'package:provider/provider.dart';
 
 class HomePage extends StatefulWidget {
@@ -9,10 +10,11 @@ class HomePage extends StatefulWidget {
   final String title;
 
   @override
-  _HomePageState createState() => _HomePageState();
+  HomePageState createState() => HomePageState();
 }
 
-class _HomePageState extends State<HomePage> {
+class HomePageState extends State<HomePage> {
+  PageController pageController = PageController();
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +23,13 @@ class _HomePageState extends State<HomePage> {
       child: Consumer<ScreensModel>(
         builder: (context, model, child) {
           return Scaffold(
-            body: model.screen,
+            body: PageView(
+              children: model.screens,
+              controller: pageController,
+              onPageChanged: (index) {
+                model.tab = index;
+              },
+            ),
             bottomNavigationBar: BottomNavigationBar(
               selectedItemColor: Color(0xff31d287),
               items: [
@@ -36,6 +44,10 @@ class _HomePageState extends State<HomePage> {
               ],
               currentIndex: model.tab,
               onTap: (index) {
+                pageController.animateToPage(
+                    index,
+                    curve: Curves.easeInOutCirc,
+                    duration: Duration(milliseconds: 500));
                 model.tab = index;
               },
             ),
@@ -44,4 +56,5 @@ class _HomePageState extends State<HomePage> {
       ),
     );
   }
+
 }

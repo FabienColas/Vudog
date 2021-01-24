@@ -2,7 +2,8 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dogapp/ui/widgets/errors_dialog.dart';
-import 'package:flutter_dogapp/ui/extensions/string_extensions.dart';
+import 'package:flutter_dogapp/extensions/string_extensions.dart';
+import 'package:flutter_dogapp/ui/widgets/success_dialog.dart';
 
 class LoginModel extends ChangeNotifier {
   final BuildContext context;
@@ -28,6 +29,7 @@ class LoginModel extends ChangeNotifier {
         success = true;
         print(response.data);
         notifyListeners();
+        showSuccessDialog(context, 'Authentication complete');
       }
     } catch (e) {
       loading = false;
@@ -36,7 +38,7 @@ class LoginModel extends ChangeNotifier {
       if (e is DioError) {
         errorMessage = e.response.data['error'];
         errorMessage = errorMessage.capitalize();
-        showErrorDialog(context, errorMessage, 'Oh oh...');
+        showErrorDialog(context, errorMessage);
       }
       print(errorMessage);
       notifyListeners();

@@ -1,6 +1,6 @@
 
 import 'package:flutter/material.dart';
-import 'package:flutter_dogapp/ui/models/dogs_model.dart';
+import 'package:flutter_dogapp/core/models/dogs_model.dart';
 import 'package:provider/provider.dart';
 
 class BreedsPage extends StatefulWidget {
@@ -10,10 +10,13 @@ class BreedsPage extends StatefulWidget {
   _BreedsPageState createState() => _BreedsPageState();
 }
 
-class _BreedsPageState extends State<BreedsPage> {
+class _BreedsPageState extends State<BreedsPage> with AutomaticKeepAliveClientMixin {
 
   ScrollController listController = ScrollController();
   bool isScrollListenerAttach = false;
+
+  @override
+  bool get wantKeepAlive => true;
 
   @override
   void initState() {
@@ -40,8 +43,9 @@ class _BreedsPageState extends State<BreedsPage> {
 
   @override
   Widget build(BuildContext context) {
+    super.build(context);
     return ChangeNotifierProvider(
-      create:(_) => DogsModel(),
+      create:(_) => DogsModel(context),
       child: Consumer<DogsModel>(
       builder: (context, model, child) {
         if (isScrollListenerAttach == false) {
@@ -53,13 +57,12 @@ class _BreedsPageState extends State<BreedsPage> {
           isScrollListenerAttach = true;
         }
         return Scaffold(
-          backgroundColor: Colors.grey[300],
+          backgroundColor: Colors.grey[200],
           body: model.loading == true ? showLoading()
           : ListView.builder(
             controller: listController,
             itemCount: model.cards.length + 1,
             itemBuilder: (context, index) {
-
               if (index == model.cards.length) {
                 return model.noMoreData == true ? Container() : Center(child: CircularProgressIndicator());
               } else {

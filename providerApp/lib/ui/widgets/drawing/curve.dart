@@ -1,5 +1,6 @@
 import 'dart:math';
 import 'package:flutter/material.dart';
+import 'package:flutter_dogapp/assets/constants.dart' as Constants;
 import 'custom_clip.dart';
 
 class ShapeContainer extends StatelessWidget {
@@ -21,7 +22,7 @@ class ShapeContainer extends StatelessWidget {
                   gradient: LinearGradient(
                       begin: Alignment.topCenter,
                       end: Alignment.bottomCenter,
-                      colors: [Color(0xff3599cb),Color(0xff3589cb)]
+                      colors: [Constants.BLUE,Constants.BLUE]
                   )
               ),
             ),

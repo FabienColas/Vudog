@@ -1,5 +1,6 @@
 
 import 'package:flutter/material.dart';
+import 'package:flutter_dogapp/assets/constants.dart' as Constants;
 
 class DogCard extends StatefulWidget {
   DogCard({Key key, this.name, this.image, this.origin,
@@ -62,12 +63,8 @@ class _DogCardState extends State<DogCard> {
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-      Row(
-        children: [
-          Text("Height(cm)", style: TextStyle(fontWeight: FontWeight.bold),),
-        ],
-      ),
-      Text(widget.heightMetric)
+        Text("Height(cm)", style: TextStyle(fontWeight: FontWeight.bold),),
+        Text(widget.heightMetric)
       ],
     );
   }
@@ -113,7 +110,7 @@ class _DogCardState extends State<DogCard> {
           actions: <Widget>[
             OutlinedButton(
               style: ButtonStyle(
-                backgroundColor: MaterialStateProperty.all<Color>(Colors.blue),
+                backgroundColor: MaterialStateProperty.all<Color>(Constants.GREEN),
               ),
               child: Text('Close', style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),),
               onPressed: () {

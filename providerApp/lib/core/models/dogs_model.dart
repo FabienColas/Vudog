@@ -1,20 +1,23 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_dogapp/ui/widgets/dog_card.dart';
+import 'package:flutter_dogapp/ui/widgets/errors_dialog.dart';
 
 class DogsModel extends ChangeNotifier {
 
+  BuildContext context;
   bool loading = false;
   bool errors = false;
   bool noMoreData = false;
   int currentPage = 0;
   List<DogCard> cards = [];
 
-  DogsModel(){
+  DogsModel(BuildContext context){
+    this.context = context;
     isLoading(true);
     getBreeds();
   }
-  //queryParameters:{"page": 1, 'limit': 15}
+
   Future<void> getBreeds() async {
     try {
       Dio dio = new Dio();
@@ -22,7 +25,7 @@ class DogsModel extends ChangeNotifier {
       dio.options.headers['content-Type'] = 'application/json';
       dio.options.headers['x-api-key'] = '625f1f0d-b936-4a01-b7de-32e5fa8480de';
       final response = await dio.get(
-          url, queryParameters: {"page": currentPage, 'limit': 10});
+          url, queryParameters: {"page": currentPage, 'limit': 15});
       if (response.statusCode == 200) {
         var result = response.data;
         result.forEach((element) {
@@ -40,7 +43,7 @@ class DogsModel extends ChangeNotifier {
         isLoading(false);
       }
     } catch (e) {
-
+      showErrorDialog(context, "Something went wrong");
     }
   }
 
