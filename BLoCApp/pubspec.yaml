@@ -23,8 +23,11 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  # use to create BLoC paterns
   flutter_bloc: ^6.1.1
+  # use to handle API calls
   dio: ^3.0.10
+  # use to compare event with BLoC
   equatable: ^1.2.5
 
 
