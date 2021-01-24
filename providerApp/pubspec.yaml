@@ -1,4 +1,4 @@
-name: flutter_vudog
+name: flutter_dogapp
 description: A new Flutter application.
 
 # The following line prevents the package from being accidentally published to
@@ -23,7 +23,9 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  # use to integrate Provider paterns
   provider: ^4.3.3
+  # use to make API calls
   dio: any
 
 
@@ -32,7 +34,6 @@ dependencies:
   cupertino_icons: ^1.0.2
 
 dev_dependencies:
-  pedantic: ^1.9.0
   flutter_test:
     sdk: flutter
   integration_test:
