@@ -1,7 +1,7 @@
 
 import 'package:flutter/material.dart';
-import 'package:flutter_vudog/core/models/dogs_model.dart';
-import 'package:flutter_vudog/ui/widgets/custom_containers.dart';
+import 'package:flutter_dogapp/core/models/dogs_model.dart';
+import 'package:flutter_dogapp/ui/widgets/custom_containers.dart';
 import 'package:provider/provider.dart';
 
 class BreedsPage extends StatefulWidget {

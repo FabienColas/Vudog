@@ -1,6 +1,6 @@
 
 import 'package:flutter/material.dart';
-import 'package:flutter_vudog/assets/constants.dart' as Constants;
+import 'package:flutter_dogapp/assets/constants.dart' as Constants;
 
 class DogCard extends StatefulWidget {
   DogCard({Key key, this.name, this.image, this.origin,

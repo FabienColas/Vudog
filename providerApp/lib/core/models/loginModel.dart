@@ -1,9 +1,9 @@
 
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_vudog/ui/widgets/errors_dialog.dart';
-import 'package:flutter_vudog/extensions/string_extensions.dart';
-import 'package:flutter_vudog/ui/widgets/success_dialog.dart';
+import 'package:flutter_dogapp/ui/widgets/errors_dialog.dart';
+import 'package:flutter_dogapp/extensions/string_extensions.dart';
+import 'package:flutter_dogapp/ui/widgets/success_dialog.dart';
 
 // class that handle the login API call and callbacks on error or success
 class LoginModel extends ChangeNotifier {
@@ -40,6 +40,8 @@ class LoginModel extends ChangeNotifier {
         errorMessage = e.response.data['error'];
         errorMessage = errorMessage.capitalize();
         showErrorDialog(context, errorMessage);
+      } else {
+        showErrorDialog(context, 'Something went wrong');
       }
       print(errorMessage);
       notifyListeners();

@@ -1,8 +1,8 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:flutter_vudog/assets/constants.dart' as Constants;
-import 'package:flutter_vudog/core/models/screens_model.dart';
+import 'package:flutter_dogapp/assets/constants.dart' as Constants;
+import 'package:flutter_dogapp/core/models/screens_model.dart';
 import 'package:provider/provider.dart';
 
 class HomePage extends StatefulWidget {

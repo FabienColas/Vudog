@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
-import 'package:flutter_vudog/ui/screens/breeds_page.dart';
-import 'package:flutter_vudog/ui/screens/login_page.dart';
+import 'package:flutter_dogapp/ui/screens/breeds_page.dart';
+import 'package:flutter_dogapp/ui/screens/login_page.dart';
 
 // class that handle BottomNavigationBar logic
 class ScreensModel extends ChangeNotifier {

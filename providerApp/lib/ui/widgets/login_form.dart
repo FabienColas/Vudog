@@ -1,8 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_vudog/assets/constants.dart' as Constants;
-import 'package:flutter_vudog/core/models/loginModel.dart';
-import 'package:flutter_vudog/ui/widgets/custom_containers.dart';
+import 'package:flutter_dogapp/assets/constants.dart' as Constants;
+import 'package:flutter_dogapp/core/models/loginModel.dart';
+import 'package:flutter_dogapp/ui/widgets/custom_containers.dart';
 
 class LoginForm {
   final _formKey = GlobalKey<FormState>();

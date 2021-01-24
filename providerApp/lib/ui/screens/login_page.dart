@@ -1,9 +1,9 @@
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_vudog/core/models/loginModel.dart';
-import 'package:flutter_vudog/ui/widgets/drawing/curve.dart';
-import 'package:flutter_vudog/ui/widgets/login_form.dart';
+import 'package:flutter_dogapp/core/models/loginModel.dart';
+import 'package:flutter_dogapp/ui/widgets/drawing/curve.dart';
+import 'package:flutter_dogapp/ui/widgets/login_form.dart';
 import 'package:provider/provider.dart';
 
 class LoginPage extends StatefulWidget {

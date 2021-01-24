@@ -1,7 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:flutter_vudog/ui/widgets/dog_card.dart';
-import 'package:flutter_vudog/ui/widgets/errors_dialog.dart';
+import 'package:flutter_dogapp/ui/widgets/dog_card.dart';
+import 'package:flutter_dogapp/ui/widgets/errors_dialog.dart';
 
 /*
 * Class that handle calls on the dog API with callbacks on error
