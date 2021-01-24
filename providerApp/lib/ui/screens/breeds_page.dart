@@ -50,6 +50,7 @@ class _BreedsPageState extends State<BreedsPage> with AutomaticKeepAliveClientMi
       child: Consumer<DogsModel>(
       builder: (context, model, child) {
         if (isScrollListenerAttach == false) {
+          // add listener callback when user scroll at the bottom of the list to load more breeds
           listController.addListener(() {
             if (listController.position.pixels == listController.position.maxScrollExtent) {
               model.getMoreBreeds();
@@ -69,6 +70,7 @@ class _BreedsPageState extends State<BreedsPage> with AutomaticKeepAliveClientMi
                     controller: listController,
                     itemCount: model.cards.length + 1,
                     itemBuilder: (context, index) {
+                      // use to inform the user that the list is loading
                       if (index == model.cards.length) {
                         return model.noMoreData == true ? Container() : Center(child: CircularProgressIndicator());
                       } else {

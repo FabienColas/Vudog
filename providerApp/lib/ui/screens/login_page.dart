@@ -24,12 +24,14 @@ class _LoginPageState extends State<LoginPage> {
           return Scaffold(
             body: Stack(
               children: [
+                // draw the up right shape
                 Positioned(
                     top: -MediaQuery.of(context).size.height * .15,
                     right: -MediaQuery.of(context).size.width * .4,
                     child: ShapeContainer(neg: true)
                 ),
                 LoginForm().buildForm(context, model),
+                // draw the down left shape
                 Positioned(
                     top: MediaQuery.of(context).size.height * .6,
                     right: MediaQuery.of(context).size.width * .4,

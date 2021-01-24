@@ -50,7 +50,7 @@ class LoginForm {
                         return 'Please enter your email';
                       }
                       return null;
-                      },
+                    },
                   ), true, false
                   ),
                   Row(

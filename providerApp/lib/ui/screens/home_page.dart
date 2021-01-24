@@ -47,6 +47,7 @@ class HomePageState extends State<HomePage> {
               ],
               currentIndex: model.tab,
               onTap: (index) {
+                // add transition animation between pages
                 pageController.animateToPage(
                     index,
                     curve: Curves.easeInOutCirc,

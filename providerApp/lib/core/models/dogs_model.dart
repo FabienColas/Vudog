@@ -3,6 +3,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter_vudog/ui/widgets/dog_card.dart';
 import 'package:flutter_vudog/ui/widgets/errors_dialog.dart';
 
+/*
+* Class that handle calls on the dog API with callbacks on error
+* */
 class DogsModel extends ChangeNotifier {
 
   BuildContext context;
@@ -18,6 +21,7 @@ class DogsModel extends ChangeNotifier {
     getBreeds();
   }
 
+  // Use to get first Breeds
   Future<void> getBreeds() async {
     try {
       Dio dio = new Dio();
@@ -29,15 +33,14 @@ class DogsModel extends ChangeNotifier {
       if (response.statusCode == 200) {
         var result = response.data;
         result.forEach((element) {
-          print(element);
           cards.add(DogCard(
-              name: element['name'],
-              image: element['image']['url'],
-              origin: element['origin'],
-              lifespan: element['life_span'],
-              weightMetric: element['weight']['metric'],
-              heightMetric: element['height']['metric'],
-              temperament: element['temperament']));
+              name: element['name'] ?? 'unknown',
+              image: element['image']['url'] ?? 'unknown',
+              origin: element['origin'] ?? 'unknown',
+              lifespan: element['life_span'] ?? 'unknown',
+              weightMetric: element['weight']['metric'] ?? 'unknown',
+              heightMetric: element['height']['metric'] ?? 'unknown',
+              temperament: element['temperament'] ?? 'unknown'));
         });
         currentPage++;
         isLoading(false);
@@ -46,7 +49,7 @@ class DogsModel extends ChangeNotifier {
       showErrorDialog(context, "Something went wrong");
     }
   }
-
+  // Will add DogCard to the card list
   Future<void> getMoreBreeds() async {
     try {
       Dio dio = new Dio();
@@ -63,15 +66,14 @@ class DogsModel extends ChangeNotifier {
           return;
         }
         result.forEach((element) {
-          print(element);
           cards.add(DogCard(
-              name: element['name'],
-              image: element['image']['url'],
-              origin: element['origin'],
-              lifespan: element['life_span'],
-              weightMetric: element['weight']['metric'],
-              heightMetric: element['height']['metric'],
-              temperament: element['temperament']));
+              name: element['name'] ?? 'unknown',
+              image: element['image']['url'] ?? 'unknown',
+              origin: element['origin'] ?? 'unknown',
+              lifespan: element['life_span'] ?? 'unknown',
+              weightMetric: element['weight']['metric'] ?? 'unknown',
+              heightMetric: element['height']['metric'] ?? 'unknown',
+              temperament: element['temperament'] ?? 'unknown'));
         });
         currentPage++;
         isLoading(false);

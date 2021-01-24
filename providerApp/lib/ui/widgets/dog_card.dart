@@ -75,7 +75,7 @@ class _DogCardState extends State<DogCard> {
     );
   }
 
-  _showMaterialDialog() {
+  _showDogDialog() {
     showDialog(
         context: context,
         builder: (_) => AlertDialog(
@@ -90,6 +90,7 @@ class _DogCardState extends State<DogCard> {
                   ],
                 ),
                 _spaceAround(),
+                // use IntrinsicHeight to be able to draw VerticalDivider
                 IntrinsicHeight(
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -136,9 +137,7 @@ class _DogCardState extends State<DogCard> {
                 child: CircleAvatar(
                     radius: 50,
                     backgroundColor: Colors.white,
-                    backgroundImage: NetworkImage(
-                      widget.image,
-                    )
+                    backgroundImage: NetworkImage(widget.image,)
                 ),
               ),
               Flexible(
@@ -150,7 +149,7 @@ class _DogCardState extends State<DogCard> {
             ],
           ),
           onTap: () {
-            _showMaterialDialog();
+            _showDogDialog();
           },
         ),
       ),

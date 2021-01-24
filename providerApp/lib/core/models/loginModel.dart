@@ -5,6 +5,7 @@ import 'package:flutter_vudog/ui/widgets/errors_dialog.dart';
 import 'package:flutter_vudog/extensions/string_extensions.dart';
 import 'package:flutter_vudog/ui/widgets/success_dialog.dart';
 
+// class that handle the login API call and callbacks on error or success
 class LoginModel extends ChangeNotifier {
   final BuildContext context;
   String errorMessage;
