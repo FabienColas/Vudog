@@ -29,6 +29,8 @@ dependencies:
   dio: ^3.0.10
   # use to compare event with BLoC
   equatable: ^1.2.5
+  # use to test Dio calls
+  http_mock_adapter: ^0.1.5
 
 
   # The following adds the Cupertino Icons font to your application.
@@ -36,6 +38,7 @@ dependencies:
   cupertino_icons: ^1.0.2
 
 dev_dependencies:
+  test: any
   flutter_test:
     sdk: flutter
   integration_test:
