@@ -42,6 +42,7 @@ class _LoginPageState extends State<LoginPage> {
               showSuccessDialog(context, state.success));
         }
           return Scaffold(
+            resizeToAvoidBottomInset: false,
             body: Stack(
               children: [
                 // draw the up right shape
