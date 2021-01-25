@@ -22,6 +22,7 @@ class _LoginPageState extends State<LoginPage> {
       child: Consumer<LoginProvider>(
         builder: (context, provider, child) {
           return Scaffold(
+            resizeToAvoidBottomInset: false,
             body: Stack(
               children: [
                 // draw the up right shape

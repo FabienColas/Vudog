@@ -6,9 +6,7 @@ import 'package:flutter_dogapp/ui/screens/breeds_page.dart';
 import 'package:flutter_dogapp/ui/screens/login_page.dart';
 
 class HomePage extends StatefulWidget {
-  HomePage({Key key, this.title}) : super(key: key);
-
-  final String title;
+  HomePage({Key key}) : super(key: key);
 
   @override
   HomePageState createState() => HomePageState();
