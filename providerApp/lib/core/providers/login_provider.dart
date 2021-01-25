@@ -6,14 +6,14 @@ import 'package:flutter_dogapp/extensions/string_extensions.dart';
 import 'package:flutter_dogapp/ui/widgets/success_dialog.dart';
 
 // class that handle the login API call and callbacks on error or success
-class LoginModel extends ChangeNotifier {
+class LoginProvider extends ChangeNotifier {
   final BuildContext context;
   String errorMessage;
   bool errors;
   bool loading = false;
   bool success = false;
 
-  LoginModel(this.context);
+  LoginProvider(this.context);
 
   Future<void> loginRequest(String email, String password) async {
     isLoading(true);

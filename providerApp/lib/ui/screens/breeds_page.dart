@@ -1,6 +1,6 @@
 
 import 'package:flutter/material.dart';
-import 'package:flutter_dogapp/core/models/dogs_model.dart';
+import 'package:flutter_dogapp/core/providers/dogs_provider.dart';
 import 'package:flutter_dogapp/ui/widgets/custom_containers.dart';
 import 'package:provider/provider.dart';
 
@@ -46,21 +46,21 @@ class _BreedsPageState extends State<BreedsPage> with AutomaticKeepAliveClientMi
   Widget build(BuildContext context) {
     super.build(context);
     return ChangeNotifierProvider(
-      create:(_) => DogsModel(context),
-      child: Consumer<DogsModel>(
-      builder: (context, model, child) {
+      create:(_) => DogsProvider(context),
+      child: Consumer<DogsProvider>(
+      builder: (context, provider, child) {
         if (isScrollListenerAttach == false) {
           // add listener callback when user scroll at the bottom of the list to load more breeds
           listController.addListener(() {
             if (listController.position.pixels == listController.position.maxScrollExtent) {
-              model.getMoreBreeds();
+              provider.getMoreBreeds();
             }
           });
           isScrollListenerAttach = true;
         }
         return Scaffold(
           backgroundColor: Colors.grey[200],
-          body: model.loading == true ? showLoading()
+          body: provider.loading == true ? showLoading()
           : SafeArea(
             child: Column(
               children: [
@@ -68,13 +68,13 @@ class _BreedsPageState extends State<BreedsPage> with AutomaticKeepAliveClientMi
                 Expanded(
                   child: ListView.builder(
                     controller: listController,
-                    itemCount: model.cards.length + 1,
+                    itemCount: provider.cards.length + 1,
                     itemBuilder: (context, index) {
                       // use to inform the user that the list is loading
-                      if (index == model.cards.length) {
-                        return model.noMoreData == true ? Container() : Center(child: CircularProgressIndicator());
+                      if (index == provider.cards.length) {
+                        return provider.noMoreData == true ? Container() : Center(child: CircularProgressIndicator());
                       } else {
-                        return model.cards[index];
+                        return provider.cards[index];
                       }
                     },
                   ),

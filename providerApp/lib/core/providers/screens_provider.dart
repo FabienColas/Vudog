@@ -3,7 +3,7 @@ import 'package:flutter_dogapp/ui/screens/breeds_page.dart';
 import 'package:flutter_dogapp/ui/screens/login_page.dart';
 
 // class that handle BottomNavigationBar logic
-class ScreensModel extends ChangeNotifier {
+class ScreensProvider extends ChangeNotifier {
   int currentTab = 0;
   List<Widget> screens = [
     LoginPage(),

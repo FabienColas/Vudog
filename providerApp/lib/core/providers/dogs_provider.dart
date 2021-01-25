@@ -6,7 +6,7 @@ import 'package:flutter_dogapp/ui/widgets/errors_dialog.dart';
 /*
 * Class that handle calls on the dog API with callbacks on error
 * */
-class DogsModel extends ChangeNotifier {
+class DogsProvider extends ChangeNotifier {
 
   BuildContext context;
   bool loading = false;
@@ -15,7 +15,7 @@ class DogsModel extends ChangeNotifier {
   int currentPage = 0;
   List<DogCard> cards = [];
 
-  DogsModel(BuildContext context){
+  DogsProvider(BuildContext context){
     this.context = context;
     isLoading(true);
     getBreeds();

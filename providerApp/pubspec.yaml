@@ -26,7 +26,9 @@ dependencies:
   # use to integrate Provider paterns
   provider: ^4.3.3
   # use to make API calls
-  dio: any
+  dio: ^3.0.10
+  # use to test API calls with mock
+  http_mock_adapter: ^0.1.5
 
 
   # The following adds the Cupertino Icons font to your application.
@@ -34,6 +36,8 @@ dependencies:
   cupertino_icons: ^1.0.2
 
 dev_dependencies:
+  # use to create unit tests
+  test: ^1.15.7
   flutter_test:
     sdk: flutter
   integration_test:

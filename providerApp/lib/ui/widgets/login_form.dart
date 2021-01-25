@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dogapp/assets/constants.dart' as Constants;
-import 'package:flutter_dogapp/core/models/loginModel.dart';
+import 'package:flutter_dogapp/core/providers/login_provider.dart';
 import 'package:flutter_dogapp/ui/widgets/custom_containers.dart';
 
 class LoginForm {
@@ -9,7 +9,7 @@ class LoginForm {
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
 
-  Widget buildForm(BuildContext context, LoginModel model) {
+  Widget buildForm(BuildContext context, LoginProvider provider) {
     return Form(
       key: _formKey,
       child: Column(
@@ -97,15 +97,15 @@ class LoginForm {
               children: [
                 Container(
                     margin: EdgeInsets.symmetric(horizontal: 20),
-                    child: model.loading == true ? CircularProgressIndicator() : MaterialButton(
+                    child: provider.loading == true ? CircularProgressIndicator() : MaterialButton(
                       elevation: 5,
                       onPressed: () {
                         if (_formKey.currentState.validate()) {
                           // email ok eve.holt@reqres.in
-                          model.loginRequest(_emailController.text, _passwordController.text);
+                          provider.loginRequest(_emailController.text, _passwordController.text);
                         }
                       },
-                      color: model.success == true ? Constants.GREEN : Constants.BLUE,
+                      color: provider.success == true ? Constants.GREEN : Constants.BLUE,
                       child: Icon(
                         Icons.pets,
                         size: 40,

@@ -2,7 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_dogapp/assets/constants.dart' as Constants;
-import 'package:flutter_dogapp/core/models/screens_model.dart';
+import 'package:flutter_dogapp/core/providers/screens_provider.dart';
 import 'package:provider/provider.dart';
 
 class HomePage extends StatefulWidget {
@@ -20,15 +20,15 @@ class HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider(
-      create: (_) => ScreensModel(),
-      child: Consumer<ScreensModel>(
-        builder: (context, model, child) {
+      create: (_) => ScreensProvider(),
+      child: Consumer<ScreensProvider>(
+        builder: (context, provider, child) {
           return Scaffold(
             body: PageView(
-              children: model.screens,
+              children: provider.screens,
               controller: pageController,
               onPageChanged: (index) {
-                model.tab = index;
+                provider.tab = index;
               },
             ),
             bottomNavigationBar: BottomNavigationBar(
@@ -45,14 +45,14 @@ class HomePageState extends State<HomePage> {
                     label: 'Breeds'
                 )
               ],
-              currentIndex: model.tab,
+              currentIndex: provider.tab,
               onTap: (index) {
                 // add transition animation between pages
                 pageController.animateToPage(
                     index,
                     curve: Curves.easeInOutCirc,
                     duration: Duration(milliseconds: 500));
-                model.tab = index;
+                provider.tab = index;
               },
             ),
           );

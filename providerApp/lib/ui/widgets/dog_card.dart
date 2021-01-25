@@ -86,7 +86,7 @@ class _DogCardState extends State<DogCard> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Flexible(child: Image.network(widget.image,))
+                    Flexible(child: widget.image == null ? Container() : Image.network(widget.image,))
                   ],
                 ),
                 _spaceAround(),
@@ -134,7 +134,7 @@ class _DogCardState extends State<DogCard> {
             children: [
               Container(
                 margin: EdgeInsets.symmetric(vertical: 10, horizontal: 10),
-                child: CircleAvatar(
+                child: widget.image == null ? Container() : CircleAvatar(
                     radius: 50,
                     backgroundColor: Colors.white,
                     backgroundImage: NetworkImage(widget.image,)
