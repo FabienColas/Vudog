@@ -1,3 +1,3 @@
 # flutter_dogapp
 
-A new Flutter application.
+A new Dog application.
